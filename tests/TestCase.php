@@ -2,9 +2,8 @@
 
 namespace Soyhuce\ModelInjection\Tests;
 
-use Illuminate\Database\Eloquent\Factories\Factory;
 use Orchestra\Testbench\TestCase as Orchestra;
-use Soyhuce\ModelInjection\ModelInjectionServiceProvider;
+use Soyhuce\ModelInjection\Tests\Fixtures\TestServiceProvider;
 
 /**
  * @coversNothing
@@ -15,25 +14,11 @@ class TestCase extends Orchestra
     {
         parent::setUp();
 
-        Factory::guessFactoryNamesUsing(
-            fn (string $modelName) => 'Soyhuce\\ModelInjection\\Database\\Factories\\' . class_basename($modelName) . 'Factory'
-        );
+        $this->loadMigrationsFrom(__DIR__ . '/database');
     }
 
-    protected function getPackageProviders($app)
+    protected function getPackageProviders($app): array
     {
-        return [
-            ModelInjectionServiceProvider::class,
-        ];
-    }
-
-    public function getEnvironmentSetUp($app): void
-    {
-        config()->set('database.default', 'testing');
-
-        /*
-        $migration = include __DIR__.'/../database/migrations/create_laravel-model-injection_table.php.stub';
-        $migration->up();
-        */
+        return [TestServiceProvider::class];
     }
 }
