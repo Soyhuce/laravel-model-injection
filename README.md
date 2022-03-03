@@ -3,6 +3,7 @@
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/soyhuce/laravel-model-injection.svg?style=flat-square)](https://packagist.org/packages/soyhuce/laravel-model-injection)
 [![GitHub Tests Action Status](https://img.shields.io/github/workflow/status/soyhuce/laravel-model-injection/run-tests?label=tests)](https://github.com/soyhuce/laravel-model-injection/actions?query=workflow%3Arun-tests+branch%3Amain)
 [![GitHub Code Style Action Status](https://img.shields.io/github/workflow/status/soyhuce/laravel-model-injection/Check%20&%20fix%20styling?label=code%20style)](https://github.com/soyhuce/laravel-model-injection/actions?query=workflow%3A"Check+%26+fix+styling"+branch%3Amain)
+[![GitHub Tests Action Status](https://img.shields.io/github/workflow/status/soyhuce/laravel-model-injection/PHPStan?label=phpstan)](https://github.com/soyhuce/laravel-model-injection/actions?query=workflow%3APHPStan+branch%3Amain)
 [![Total Downloads](https://img.shields.io/packagist/dt/soyhuce/laravel-model-injection.svg?style=flat-square)](https://packagist.org/packages/soyhuce/laravel-model-injection)
 
 This is where your description should go. Limit it to a paragraph or two. Consider adding a small example.
