@@ -2,9 +2,9 @@
 
 namespace Soyhuce\ModelInjection;
 
+use Soyhuce\ModelInjection\Commands\ModelInjectionCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use Soyhuce\ModelInjection\Commands\ModelInjectionCommand;
 
 class ModelInjectionServiceProvider extends PackageServiceProvider
 {
