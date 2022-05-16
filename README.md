@@ -29,11 +29,11 @@ You will have then to implement the method `public function routeBindingRules():
 which will define, for each key on which the model will be bound, the rules to validate the url parameter.
 
 ```php
-use Soyhuce\ModelInjection\ValidatesImplicitBindings;
+use Soyhuce\ModelInjection\ValidatesImplicitBinding;
 
 class Post extends Model 
 {
-    use ValidatesImplicitBindings;
+    use ValidatesImplicitBinding;
     
     /**
      * @return array<string, mixed>
