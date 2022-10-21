@@ -2,6 +2,7 @@
 
 namespace Soyhuce\ModelInjection\Tests;
 
+use Illuminate\Foundation\Testing\Concerns\InteractsWithDeprecationHandling;
 use Orchestra\Testbench\TestCase as Orchestra;
 use Soyhuce\ModelInjection\Tests\Fixtures\TestServiceProvider;
 
@@ -10,9 +11,12 @@ use Soyhuce\ModelInjection\Tests\Fixtures\TestServiceProvider;
  */
 class TestCase extends Orchestra
 {
+    use InteractsWithDeprecationHandling;
+
     protected function setUp(): void
     {
         parent::setUp();
+        $this->withoutDeprecationHandling();
 
         $this->loadMigrationsFrom(__DIR__ . '/database');
     }
