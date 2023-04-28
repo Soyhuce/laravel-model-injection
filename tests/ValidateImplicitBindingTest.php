@@ -1,5 +1,7 @@
 <?php declare(strict_types=1);
 
+use Illuminate\Support\Facades\Log as Log;
+use Soyhuce\ModelInjection\InvalidRouteBinding;
 use Soyhuce\ModelInjection\RouteBindingValidationMustBeDefined;
 use Soyhuce\ModelInjection\Tests\Fixtures\Post;
 use Soyhuce\ModelInjection\Tests\Fixtures\User;
@@ -35,6 +37,8 @@ beforeEach(function (): void {
     );
 });
 
+afterEach(fn () => InvalidRouteBinding::handleUsing(null));
+
 it('binds the model', function (): void {
     $this->getJson("users/{$this->user->id}")
         ->assertOk()
@@ -47,7 +51,7 @@ it('binds the model', function (): void {
 it('validates the parameters', function (): void {
     $this->getJson('users/foo')
         ->assertNotFound()
-        ->assertJsonPath('message', 'The model key is invalid.');
+        ->assertJsonPath('message', 'Invalid route binding.');
 });
 
 it('return not found if the model does not exist', function (): void {
@@ -84,7 +88,7 @@ it('can bind the model on custom key', function (): void {
 it('validates the custom key', function (): void {
     $this->getJson('users-on-name/1')
         ->assertNotFound()
-        ->assertJsonPath('message', 'The model key is invalid.');
+        ->assertJsonPath('message', 'Invalid route binding.');
 });
 
 it('does not find the model on custom key', function (): void {
@@ -96,7 +100,7 @@ it('does not find the model on custom key', function (): void {
 it('validates the custom key with trashed', function (): void {
     $this->getJson('users-on-name-with-trashed/1')
         ->assertNotFound()
-        ->assertJsonPath('message', 'The model key is invalid.');
+        ->assertJsonPath('message', 'Invalid route binding.');
 });
 
 it('fails when custom key does not have validation rule', function (): void {
@@ -130,7 +134,7 @@ it('scopes scoped model', function (): void {
 it('validates scoped bindings', function (): void {
     $this->getJson("users/{$this->user->id}/posts/foo")
         ->assertNotFound()
-        ->assertJsonPath('message', 'The model key is invalid.');
+        ->assertJsonPath('message', 'Invalid route binding.');
 });
 
 it('return not found if scoped model is not found', function (): void {
@@ -179,7 +183,7 @@ it('scopes scoped model on custom key', function (): void {
 it('validates scoped bindings on custom key', function (): void {
     $this->getJson("users/{$this->user->id}/posts-on-slug/3")
         ->assertNotFound()
-        ->assertJsonPath('message', 'The model key is invalid.');
+        ->assertJsonPath('message', 'Invalid route binding.');
 });
 
 it('returns not found if scoped model is not found on custom key', function (): void {
@@ -211,4 +215,20 @@ it('fails when custom key does not have validation rule for scoped model', funct
 
     $this->withoutExceptionHandling()
         ->getJson("users/{$this->user->id}/posts-on-created-at/{$this->post->created_at}");
+});
+
+it('allows to customize invalid binding handling', function (): void {
+    InvalidRouteBinding::handleUsing(function (string $class, string $field): never {
+        Log::error("Invalid binding for $class on $field.");
+
+        abort(422);
+    });
+
+    Log::spy()
+        ->shouldReceive('error')
+        ->with("Invalid binding for Soyhuce\ModelInjection\Tests\Fixtures\User on id.")
+        ->once();
+
+    $this->getJson('users/foo')
+        ->assertStatus(422);
 });

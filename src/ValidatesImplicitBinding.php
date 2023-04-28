@@ -2,7 +2,6 @@
 
 namespace Soyhuce\ModelInjection;
 
-use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Support\Facades\Validator;
 use function in_array;
 
@@ -30,7 +29,7 @@ trait ValidatesImplicitBinding
         $field ??= $this->getRouteKeyName();
 
         if (Validator::make([$field => $value], [$field => $this->routeBindingRule($field)])->fails()) {
-            throw new ModelNotFoundException('The model key is invalid.');
+            InvalidRouteBinding::handle(static::class, $field);
         }
     }
 
