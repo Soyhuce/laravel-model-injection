@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-use Illuminate\Support\Facades\Log as Log;
+use Illuminate\Support\Facades\Log;
 use Soyhuce\ModelInjection\InvalidRouteBinding;
 use Soyhuce\ModelInjection\RouteBindingValidationMustBeDefined;
 use Soyhuce\ModelInjection\Tests\Fixtures\Post;
@@ -219,14 +219,14 @@ it('fails when custom key does not have validation rule for scoped model', funct
 
 it('allows to customize invalid binding handling', function (): void {
     InvalidRouteBinding::handleUsing(function (string $class, string $field): never {
-        Log::error("Invalid binding for $class on $field.");
+        Log::error("Invalid binding for {$class} on {$field}.");
 
         abort(422);
     });
 
     Log::spy()
         ->shouldReceive('error')
-        ->with("Invalid binding for Soyhuce\ModelInjection\Tests\Fixtures\User on id.")
+        ->with('Invalid binding for Soyhuce\\ModelInjection\\Tests\\Fixtures\\User on id.')
         ->once();
 
     $this->getJson('users/foo')

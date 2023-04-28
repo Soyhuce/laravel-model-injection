@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Soyhuce\ModelInjection;
 
@@ -11,7 +11,7 @@ class InvalidRouteBinding
     public static ?Closure $handler = null;
 
     /**
-     * @param ?\Closure(string, string): mixed $handler
+     * @param ?Closure(string, string): mixed $handler
      */
     public static function handleUsing(?Closure $handler): void
     {
@@ -20,8 +20,8 @@ class InvalidRouteBinding
 
     public static function handle(string $model, string $field): void
     {
-        static::$handler ??= function () {
-            throw new ModelNotFoundException("Invalid route binding.");
+        static::$handler ??= function (): void {
+            throw new ModelNotFoundException('Invalid route binding.');
         };
 
         (static::$handler)($model, $field);
