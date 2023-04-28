@@ -2,6 +2,15 @@
 
 All notable changes to `laravel-model-injection` will be documented in this file.
 
+## 2.0.0 - 2023-04-28
+
+### What's Changed
+
+- Bump dependabot/fetch-metadata from 1.3.6 to 1.4.0 by @dependabot in https://github.com/Soyhuce/laravel-model-injection/pull/14
+- Customize implicit binding validation failure by @bastien-phi in https://github.com/Soyhuce/laravel-model-injection/pull/15
+
+**Full Changelog**: https://github.com/Soyhuce/laravel-model-injection/compare/1.2.0...2.0.0
+
 ## 1.2.0 - 2023-02-03
 
 ### What's Changed
