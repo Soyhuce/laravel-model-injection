@@ -3,6 +3,7 @@
 namespace Soyhuce\ModelInjection;
 
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Str;
 use function in_array;
 
 /**
@@ -35,7 +36,7 @@ trait ValidatesImplicitBinding
 
     public function validateChildRouteBinding(string $childType, mixed $value, ?string $field): void
     {
-        $related = $this->{$this->childRouteBindingRelationshipName($childType)}()->getRelated();
+        $related = $this->{Str::plural(Str::camel($childType))}()->getRelated();
 
         if (in_array(ValidatesImplicitBinding::class, class_uses_recursive($related))) {
             $related->validateRouteBinding($value, $field ?: $related->getRouteKey());
