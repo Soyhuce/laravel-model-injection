@@ -4,7 +4,6 @@ namespace Soyhuce\ModelInjection;
 
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Support\Str;
 use function in_array;
 
 /**
@@ -12,14 +11,6 @@ use function in_array;
  */
 trait ValidatesImplicitBinding
 {
-    /**
-     * @param \Illuminate\Database\Eloquent\Builder $query
-     * @param mixed $value
-     * @param string|null $field
-     * @return \Illuminate\Database\Eloquent\Builder
-     * @phpcsSuppress SlevomatCodingStandard.TypeHints.ParameterTypeHint.MissingNativeTypeHint
-     * @phpcsSuppress SlevomatCodingStandard.TypeHints.ReturnTypeHint.MissingNativeTypeHint
-     */
     public function resolveRouteBindingQuery($query, $value, $field = null)
     {
         $this->validateRouteBinding($value, $field);
@@ -27,14 +18,6 @@ trait ValidatesImplicitBinding
         return parent::resolveRouteBindingQuery($query, $value, $field);
     }
 
-    /**
-     * @param string $childType
-     * @param mixed $value
-     * @param string|null $field
-     * @return \Illuminate\Database\Eloquent\Builder
-     * @phpcsSuppress SlevomatCodingStandard.TypeHints.ParameterTypeHint.MissingNativeTypeHint
-     * @phpcsSuppress SlevomatCodingStandard.TypeHints.ReturnTypeHint.MissingNativeTypeHint
-     */
     protected function resolveChildRouteBindingQuery($childType, $value, $field)
     {
         $this->validateChildRouteBinding($childType, $value, $field);
@@ -51,9 +34,9 @@ trait ValidatesImplicitBinding
         }
     }
 
-    public function validateChildRouteBinding(string $childType, mixed $value, string $field): void
+    public function validateChildRouteBinding(string $childType, mixed $value, ?string $field): void
     {
-        $related = $this->{Str::plural(Str::camel($childType))}()->getRelated();
+        $related = $this->{$this->childRouteBindingRelationshipName($childType)}()->getRelated();
 
         if (in_array(ValidatesImplicitBinding::class, class_uses_recursive($related))) {
             $related->validateRouteBinding($value, $field ?: $related->getRouteKey());
