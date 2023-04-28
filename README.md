@@ -69,7 +69,21 @@ GET /posts-by-slug/bar => 404
 
 See [https://laravel.com/docs/routing#implicit-binding](https://laravel.com/docs/routing#implicit-binding)
 
-### Bindings explicites
+#### Customize implicit route binding error
+
+You can customize the way this package will handle validation failure for implicit bindings.
+
+In a Service provider, just call `InvalidRouteBinding::handleUsing` :
+
+```php
+InvalidRouteBinding::handleUsing(function (string $class, string $field): never {
+    Log::error("Invalid binding for $class on $field.");
+
+    abort(422);
+});
+```
+
+### Explicit bindings
 
 You can explicitly bind your models using `\Soyhuce\ModelInjection\BindModels` trait in a service
 provider (`RouteServiceProvider` for exemple).
