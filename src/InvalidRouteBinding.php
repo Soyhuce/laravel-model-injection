@@ -20,7 +20,7 @@ class InvalidRouteBinding
 
     public static function handle(string $model, string $field): void
     {
-        static::$handler ??= function (): void {
+        static::$handler ??= function (): never {
             throw new ModelNotFoundException('Invalid route binding.');
         };
 
