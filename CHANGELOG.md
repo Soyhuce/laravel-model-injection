@@ -2,6 +2,15 @@
 
 All notable changes to `laravel-model-injection` will be documented in this file.
 
+## 2.2.0 - 2024-03-08
+
+### What's Changed
+
+* Bump ramsey/composer-install from 2 to 3 by @dependabot in https://github.com/Soyhuce/laravel-model-injection/pull/21
+* Add support for Laravel 11 by @bastien-phi in https://github.com/Soyhuce/laravel-model-injection/pull/22
+
+**Full Changelog**: https://github.com/Soyhuce/laravel-model-injection/compare/2.1.0...2.2.0
+
 ## 2.1.0 - 2023-11-24
 
 ### What's Changed
