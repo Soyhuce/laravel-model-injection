@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class InvalidRouteBinding
 {
-    /** @var ?Closure(string, string) */
+    /** @var ?Closure(string, string): mixed */
     public static ?Closure $handler = null;
 
     /**
