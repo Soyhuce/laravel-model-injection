@@ -2,6 +2,15 @@
 
 All notable changes to `laravel-model-injection` will be documented in this file.
 
+## 2.3.0 - 2024-12-18
+
+### What's Changed
+
+* Upgrade dependencies and php 8.4 by @bastien-phi in https://github.com/Soyhuce/laravel-model-injection/pull/25
+* Bump dependabot/fetch-metadata from 1.6.0 to 2.1.0 by @dependabot in https://github.com/Soyhuce/laravel-model-injection/pull/24
+
+**Full Changelog**: https://github.com/Soyhuce/laravel-model-injection/compare/2.2.0...2.3.0
+
 ## 2.2.0 - 2024-03-08
 
 ### What's Changed
