@@ -1,9 +1,9 @@
 # Extended Model injection for Laravel
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/soyhuce/laravel-model-injection.svg?style=flat-square)](https://packagist.org/packages/soyhuce/laravel-model-injection)
-[![GitHub Tests Action Status](https://img.shields.io/github/workflow/status/soyhuce/laravel-model-injection/run-tests?label=tests)](https://github.com/soyhuce/laravel-model-injection/actions?query=workflow%3Arun-tests+branch%3Amain)
-[![GitHub Code Style Action Status](https://img.shields.io/github/workflow/status/soyhuce/laravel-model-injection/Check%20&%20fix%20styling?label=code%20style)](https://github.com/soyhuce/laravel-model-injection/actions?query=workflow%3A"Check+%26+fix+styling"+branch%3Amain)
-[![GitHub Tests Action Status](https://img.shields.io/github/workflow/status/soyhuce/laravel-model-injection/PHPStan?label=phpstan)](https://github.com/soyhuce/laravel-model-injection/actions?query=workflow%3APHPStan+branch%3Amain)
+[![GitHub Tests Action Status](https://img.shields.io/github/actions/workflow/status/soyhuce/laravel-model-injection/run-tests.yml?branch=main&label=tests&style=flat-square)](https://github.com/soyhuce/laravel-model-injection/actions?query=workflow%3Arun-tests+branch%3Amain)
+[![GitHub Code Style Action Status](https://img.shields.io/github/actions/workflow/status/soyhuce/laravel-model-injection/php-cs-fixer.yml?branch=main&label=code%20style&style=flat-square)](https://github.com/soyhuce/laravel-model-injection/actions?query=workflow%3A"Fix+PHP+code+style+issues"+branch%3Amain)
+[![GitHub PHPStan Action Status](https://img.shields.io/github/actions/workflow/status/soyhuce/laravel-model-injection/phpstan.yml?branch=main&label=phpstan)](https://github.com/soyhuce/laravel-model-injection/actions?query=workflow%3APHPStan+branch%3Amain)
 [![Total Downloads](https://img.shields.io/packagist/dt/soyhuce/laravel-model-injection.svg?style=flat-square)](https://packagist.org/packages/soyhuce/laravel-model-injection)
 
 Want to control have better control of model injection ? Need to validate the data before querying the database ?
