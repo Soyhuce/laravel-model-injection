@@ -4,11 +4,10 @@ namespace Soyhuce\ModelInjection\Tests;
 
 use Illuminate\Foundation\Testing\Concerns\InteractsWithDeprecationHandling;
 use Orchestra\Testbench\TestCase as Orchestra;
+use PHPUnit\Framework\Attributes\CoversNothing;
 use Soyhuce\ModelInjection\Tests\Fixtures\TestServiceProvider;
 
-/**
- * @coversNothing
- */
+#[CoversNothing]
 class TestCase extends Orchestra
 {
     use InteractsWithDeprecationHandling;

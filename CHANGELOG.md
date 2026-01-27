@@ -2,6 +2,14 @@
 
 All notable changes to `laravel-model-injection` will be documented in this file.
 
+## 2.5.0 - 2026-02-27
+
+### What's Changed
+
+* Add support for PHP 8.5 in https://github.com/Soyhuce/laravel-model-injection/pull/35
+
+**Full Changelog**: https://github.com/Soyhuce/laravel-model-injection/compare/2.4.0...2.5.0
+
 ## 2.4.0 - 2025-02-24
 
 ### What's Changed
